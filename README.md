@@ -42,8 +42,9 @@ Host *
 	IdentitiesOnly yes
 ```
 
-* 這是最關鍵的步驟  
-設定.gitconfig
+* 設定.gitconfig  
+  使用github測試的話，這是最關鍵，較想不到的步驟  
+
 ```
 git config --global core.sshCommand C:/Windows/System32/OpenSSH/ssh.exe
 ```
