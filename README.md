@@ -11,7 +11,7 @@
   1. 一個就是類似 telnet 的遠端連線使用 shell 的伺服器，亦即是俗稱的 ssh
   2. 另一個就是類似 FTP 服務的 sftp-server ！提供更安全的 FTP 服務。
     在不考慮圖形介面的情況下，它已經可以取代FTP了
-
+* 目前SSH多半是採用RSA加密機制，不過也可以使用DSA或Diffie-Hellman等加密機制
 
 金鑰指紋:
 由public key 雜湊加密而來，用來驗證使用者
@@ -21,7 +21,7 @@
 下次登入時就會直接在known_hosts對應ip的公鑰指紋
 
 
-參考: https://codecharms.me/posts/security-ssh
+參考: https://codecharms.me/posts/security-ssh  
 鳥哥ssh參考: https://linux.vbird.org/linux_server/centos6/0310telnetssh.php#ssh_connect
 
 針對不同domain設定不同ssh key
