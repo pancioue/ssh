@@ -44,6 +44,12 @@ Host *
 * ssh會按照順序往下搜尋，*代表所有host都通，但不會覆蓋掉已經設定的值  
 參考:https://www.tecmint.com/configure-custom-ssh-connection-in-linux/
 
+ssh-generate
+========
+Windows:  
+terminal鍵入`ssh-keygen`後，會在`C:\Users\[user-name]\.ssh`下產生公私鑰`id_rsa_pub`、`id_rsa`,  
+直接將公鑰貼到github即可。
+
 ssh-agent: 自動記住金鑰(passphrase)
 ==========
 
