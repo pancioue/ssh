@@ -11,7 +11,6 @@
   1. 一個就是類似 telnet 的遠端連線使用 shell 的伺服器，亦即是俗稱的 ssh
   2. 另一個就是類似 FTP 服務的 sftp-server ！提供更安全的 FTP 服務。
     在不考慮圖形介面的情況下，它已經可以取代FTP了
-* 目前SSH多半是採用RSA加密機制，不過也可以使用DSA或Diffie-Hellman等加密機制
 
 金鑰指紋:
 由public key 雜湊加密而來，用來驗證使用者
@@ -23,6 +22,58 @@
 
 參考: https://codecharms.me/posts/security-ssh  
 鳥哥ssh參考: https://linux.vbird.org/linux_server/centos6/0310telnetssh.php#ssh_connect
+
+ssh-keygen
+--------
+``` shell
+ssh-keygen
+```
+可下參數`-t`選擇金鑰類型，預設值是 rsa  
+ed25519 安全性及效能最佳，但相容性較差
+
+#### 把公鑰貼到伺服器後(~/.ssh/authorized_keys)
+``` bash
+ssh -i [ssh file] USER_NAME@IP
+```
+原則上這樣就可以連上了
+
+ssh-agent
+--------
+可以使用ssh-agent管理金鑰，避免重複輸入密碼，大多數用在跨伺服器ssh  
+鍵入`ssh-agent`可以看到以下輸出設定環境變數的指令稿
+```
+SSH_AUTH_SOCK=tmp/m7pdd89s4m7d3cg9ws8v6tt80000gn/T//ssh-a2A2mfAjBOkf/agent.3678; export SSH_AUTH_SOCK;
+SSH_AGENT_PID=3679; export SSH_AGENT_PID;
+echo Agent pid 3679;
+```
+將以上幾行複製執行，就可以設定好ssh-agent的環境變數了  
+以上步驟也可以使用 eval簡化
+```
+eval $(ssh-agent)
+```
+
+ssh-add
+--------
+```
+ssh-add ~/.ssh/ssh_private_key_file
+```
+查看
+```
+ssh-add -l
+```
+
+設定好後ssh就不用指定密鑰檔案(不用指定 -i 參數)
+```
+ssh USER_NAME@IP
+```
+
+* 移除金鑰
+```
+ssh-add -d ~/.ssh/ssh_private_key_file
+```
+
+* 注意ssh-agent只是的緩存，若想永久保持，可以在 ~/.ssh/config 設定
+
 
 針對不同domain設定不同ssh key
 ===========
