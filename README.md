@@ -31,11 +31,12 @@ ssh-keygen
 可下參數`-t`選擇金鑰類型，預設值是 rsa  
 ed25519 安全性及效能最佳，但相容性較差
 
-#### 把公鑰貼到伺服器後(~/.ssh/authorized_keys)
+把公鑰貼到伺服器後(~/.ssh/authorized_keys)
 ``` bash
 ssh -i [ssh file] USER_NAME@IP
 ```
-原則上這樣就可以連上了
+原則上這樣就可以連上了  
+ps. 若是使用gcp等雲端伺服器，建議照雲端的方式加入金鑰
 
 ssh-agent
 --------
